@@ -1,0 +1,23 @@
+body{
+    display: block;
+}
+
+form {
+    width: 50%;
+}
+
+table {
+    width: 50%;
+}
+
+input{
+    width: 75%;
+}
+
+.left-panel{
+    width: 40%;
+}
+
+.right-panel{
+    width: 100%;
+}
