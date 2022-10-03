@@ -1,6 +1,3 @@
-const ApiURLCinema = "https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/open-api-catalog/cinema/";
-const ApiURLCliente = "https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/open-api-catalog/client/";
-const ApiURLMensaje = "https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/open-api-catalog/mensaje/";
 // https://gc719cfc2d6dc7f-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/open-api-catalog/client/
 const URLPrueba= "https://gc719cfc2d6dc7f-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/";
 
