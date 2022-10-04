@@ -44,7 +44,8 @@ class Clientes{
             contentType: "application/json",
             success: function(data){
              $("tbody").html("");
-        
+             //data.items.sort((a,b)=>a.name.localeCompare(b.name));
+                data.items.sort((a,b)=>a.id - b.id);
                 for(let index = 0; index < data.items.length; ++index){
                     $("tbody").append(`
                         <tr>
