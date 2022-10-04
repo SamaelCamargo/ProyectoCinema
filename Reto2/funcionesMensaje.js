@@ -1,11 +1,11 @@
-const ApiURLMensaje = "https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/mensaje/";
+const ApiURLMensaje = " https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/mensaje/mensaje";
 
-class Mensaje{
-    static insert(){
+class Comentario{
+    static insertarMensaje(){
         //Cuerpo de envio
-        const mensaje = {
+        const menssaje = {
             id: $("#idMensaje").val(),
-            menssagetext: $("#nombreMensaje").val()
+            messagetext: $("#nombreMensaje").val()
         }
 
         $.ajax({
@@ -13,7 +13,7 @@ class Mensaje{
             type: "POST",
             dataType: "json",
             crossDomain: true,
-            data: JSON.stringify(mensaje),
+            data: JSON.stringify(menssaje),
             contentType: "application/json",
             complete: function(response){
                 if (response.status === 201) {
@@ -43,9 +43,9 @@ class Mensaje{
                     $("tbody").append(`
                     <tr>
                         <td>${data.items[index].id}</td>
-                        <td>${data.items[index].menssagetext}</td>
+                        <td>${data.items[index].messagetext}</td>
                         <td>
-                            <a href = "javascript:Mensaje.loadById(${data.items[index].id})" class="link-success">${data.items[index].menssagetext}</a>
+                            <a href = "javascript:Comentario.loadById(${data.items[index].id})" class="link-success">${data.items[index].id}</a>
                         </td>
                     </tr>
                     `);
@@ -57,9 +57,9 @@ class Mensaje{
         });
     }
 
-    static loadById(id){
+    static loadByIdMensaje(id){
         $.ajax({
-            url: ApiURLCinema+"/"+id,
+            url: ApiURLMensaje+"/"+id,
             type: "GET",
             dataType: "json",
             crossDomain: true,
@@ -70,8 +70,8 @@ class Mensaje{
                 }else{
                 $("#detallesMensaje").html(`
                     <p><b>Id:</b> ${(data.items[0].id)} </p>
-                    <p><b>Mensaje:</b> ${data.items[0].menssagetext}</p>
-                    <button onclick="Cinema.deleteById( ${(data.items[0].id)})"type="button" id="EliminarMensaje" class="btn btn-success">ELIMINAR</button>
+                    <p><b>Mensaje:</b> ${data.items[0].messagetext}</p>
+                    <button onclick="Comentario.deleteById( ${(data.items[0].id)})"type="button" id="EliminarMensaje" class="btn btn-delete">ELIMINAR</button>
 
                 `);
                 }
@@ -82,11 +82,11 @@ class Mensaje{
         });
     }
 
-    static update(){
+    static actualizarMensaje(){
         //Cuerpo de envio
-        const mensaje = {
+        const menssaje = {
             id: $("#idMensaje").val(),
-            menssagetext: $("#nombreMensaje").val()
+            messagetext: $("#nombreMensaje").val()
         }
 
         $.ajax({
@@ -94,14 +94,14 @@ class Mensaje{
             type: "PUT",
             dataType: "json",
             crossDomain: true,
-            data: JSON.stringify(mensaje),
+            data: JSON.stringify(menssaje),
             contentType: "application/json",
             complete: function(response){
                 if (response.status === 201) {
                     $("#idMensaje").val(""),
                     $("#nombreMensaje").val(""),                    
                     $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
-                    Mensaje.loadAll();
+                    Comentario.loadAll();
                     alert("Mensaje actualizado");
                 }else{
                     alert("Mensaje no actualizado");
@@ -120,8 +120,8 @@ class Mensaje{
             contentType: "application/json",
             complete: function(response){
                 if (response.status === 204) {
-                    $("#detallesMensajet").html("<p>Seleccione un mensaje</p>")
-                    Cinema.loadAll();
+                    $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
+                    Comentario.loadAll();
                     alert("Mensaje eliminado");
                 }else{
                     alert("Mensaje no sea a eliminado");

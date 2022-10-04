@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body onload="Mensaje.loadAll()">
+<body onload="Comentario.loadAll()">
    
         <div class="container" id="mensaje">
             <h4>Registro del Mensaje </h4>
@@ -29,14 +29,14 @@
             <div class="row mb-3">
                 <div class="col">
                     <label for="nombreMensaje" class="form-label">MENSAJE</label>
-                    <p type="text" class="form-control" id="nombreMensaje" placeholder="Comentario">
+                    <input type="text" class="form-control" id="nombreMensaje" placeholder="Comentario">
                 </div>
             </div>
         </form>
 
         <!--Botones-->
-        <button onclick="Mensaje.insert()" type="button" id="insertarMensaje" class="btn btn-info">INSERTAR</button>
-        <button onclick="Mensaje.update()" type="button" id="actualizarMensaje" class="btn btn-info">ACTUALIZAR</button>
+        <button onclick="Comentario.insertarMensaje()" type="button" id="insertarMensaje" class="btn btn-info">INSERTAR</button>
+        <button onclick="Comentario.actualizarMensaje()" type="button" id="actualizarMensaje" class="btn btn-info">ACTUALIZAR</button>
 
 
         <br>
@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="5">No hay mensajes registrados...</td>
+                        <td colspan="2">No hay mensajes registrados...</td>
                     </tr>
                 </tbody>
             </table>
