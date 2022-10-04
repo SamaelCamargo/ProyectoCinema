@@ -1,4 +1,4 @@
-const ApiURLMensaje = " https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/mensaje/mensaje";
+const ApiURLMensaje = "https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/message/message";
 
 class Comentario{
     static insertarMensaje(){
@@ -20,7 +20,7 @@ class Comentario{
                     $("#idMensaje").val(""),
                     $("#nombreMensaje").val(""),                    
                     $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
-                    Mensaje.loadAll();
+                    Comentario.loadAll();
                     alert("Mensaje agregado");
                 }else{
                     alert("Mensaje no agregado");
@@ -39,13 +39,12 @@ class Comentario{
             success: function(data){
                 $("tbody").html("");
 
-                for(let index = 0; index < data.items.length; index++){
+                for(let index = 0; index < data.items.length; ++index){
                     $("tbody").append(`
                     <tr>
                         <td>${data.items[index].id}</td>
-                        <td>${data.items[index].messagetext}</td>
                         <td>
-                            <a href = "javascript:Comentario.loadById(${data.items[index].id})" class="link-success">${data.items[index].id}</a>
+                            <a href = "javascript:Comentario.loadByIdMensaje(${data.items[index].id})" class="link-success">${data.items[index].messagetext}</a>
                         </td>
                     </tr>
                     `);
@@ -71,7 +70,7 @@ class Comentario{
                 $("#detallesMensaje").html(`
                     <p><b>Id:</b> ${(data.items[0].id)} </p>
                     <p><b>Mensaje:</b> ${data.items[0].messagetext}</p>
-                    <button onclick="Comentario.deleteById( ${(data.items[0].id)})"type="button" id="EliminarMensaje" class="btn btn-delete">ELIMINAR</button>
+                    <button onclick="Comentario.deleteById(${(data.items[0].id)})"type="button" id="EliminarMensaje" class="btn btn-danger">ELIMINAR</button>
 
                 `);
                 }
@@ -120,11 +119,11 @@ class Comentario{
             contentType: "application/json",
             complete: function(response){
                 if (response.status === 204) {
+                    alert("Mensaje  eliminado");
+                }else{
                     $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
                     Comentario.loadAll();
                     alert("Mensaje eliminado");
-                }else{
-                    alert("Mensaje no sea a eliminado");
                 }
             }
         });
