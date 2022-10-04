@@ -119,11 +119,11 @@ class Comentario{
             contentType: "application/json",
             complete: function(response){
                 if (response.status === 204) {
-                    alert("Mensaje  eliminado");
-                }else{
                     $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
                     Comentario.loadAll();
                     alert("Mensaje eliminado");
+                }else{
+                    alert("Mensaje  eliminado");
                 }
             }
         });
