@@ -83,7 +83,7 @@ class Clientes{
                     <p><b>Nombre:</b>${(data.items[0].name)}</p>
                     <p><b>Email:</b>${(data.items[0].email)}</p>
                     <p><b>Edad:</b>${(data.items[0].age)}</p>
-                    <button onclick="Clientes.deleteByIdClient( ${(data.items[0].id)})"type="button" id="EliminarCliente" class="btn btn-success">ELIMINAR</button>
+                    <button onclick="Clientes.deleteByIdClient( ${(data.items[0].id)})"type="button" id="EliminarCliente" class="btn btn-danger">ELIMINAR</button>
                     
 
 
