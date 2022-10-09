@@ -21,7 +21,7 @@ public class Cinema {
 
     @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
     @JsonIgnoreProperties({"cinema","messages"})
-    public List<Reservation>reservations;
+    public List<Reservation>reservations;//private
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
