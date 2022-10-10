@@ -37,12 +37,5 @@ public class Score {
     public void setStarts(Integer starts) {
         this.starts = starts;
     }
-
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
+    
 }
