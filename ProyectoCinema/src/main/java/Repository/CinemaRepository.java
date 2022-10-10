@@ -22,7 +22,7 @@ public Optional<Cinema> getCinema(int id){
     return cinemaCrudRepository.findById(id);
 }
 
- public Cinema save (Cinema cinema){
+public Cinema save (Cinema cinema){
     return cinemaCrudRepository.save(cinema);
  }
 

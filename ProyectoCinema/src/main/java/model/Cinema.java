@@ -97,4 +97,5 @@ public class Cinema {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
+
 }
