@@ -13,9 +13,6 @@ public class Score {
     private String messageText;
     private Integer starts;
 
-    @OneToOne
-    @JsonIgnoreProperties("score")
-    private Reservation reservation;
 
     public Integer getIdSore() {
         return idSore;
