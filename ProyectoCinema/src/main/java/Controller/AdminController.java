@@ -14,17 +14,13 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/Admin")
-@CrossOrigin(origins = "*", methods = {
-        RequestMethod.GET,
-        RequestMethod.POST,
-        RequestMethod.PUT,
-        RequestMethod.DELETE }
-        )
+@CrossOrigin(origins = "*")
 public class AdminController {
         @Autowired
         private AdminService adminService;
 
-        @PostMapping(path = "/all")
+        @GetMapping(path = "/all")
+        @PostMapping("/all")
         public List<Admin> getAll(){
                 return adminService.getAll();
         }
