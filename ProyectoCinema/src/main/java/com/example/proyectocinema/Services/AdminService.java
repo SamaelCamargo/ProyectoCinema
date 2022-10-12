@@ -35,4 +35,13 @@ public class AdminService {
         }
     }
 
+    public boolean deleteUserAdministrator(Integer id) {
+        adminRepository.deleteUserAdministrator(id);
+        return true;
+    }
+
+    public Admin updateUserAdministrator(Admin adminModel) {
+        return adminRepository.updateUserAdministrator(adminModel);
+    }
+
 }

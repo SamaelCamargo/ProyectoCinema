@@ -39,4 +39,17 @@ public class AdminController {
                 return adminService.save(admin);
         }
 
+        @DeleteMapping("/{id}")
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+        public boolean deleteUserAdministratorModel(@PathVariable Integer id) {
+                adminService.deleteUserAdministrator(id);
+                return true;
+        }
+
+        @PutMapping("/update")
+        @ResponseStatus(HttpStatus.CREATED)
+        public Admin updateUserAdministrator(@RequestBody Admin adminModel) {
+                return adminService.updateUserAdministrator(adminModel);
+        }
+
 }

@@ -30,5 +30,36 @@ public class AdminRepository {
         adminCrudRepository.delete(admin);
     }
 
+    public boolean deleteUserAdministrator(Integer id) {
+        try {
+            adminCrudRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
 
+    }
+
+    public Admin updateUserAdministrator(Admin adminModel) {
+        if (adminModel.getIdAdmin() != null) {
+            Optional<Admin> admin = adminCrudRepository.findById(adminModel.getIdAdmin());
+            if (!admin.isEmpty()) {
+                if (adminModel.getName() != null) {
+                    admin.get().setName(adminModel.getName());
+                }
+                if (adminModel.getEmail() != null) {
+                    admin.get().setEmail(adminModel.getEmail());
+                }
+                if (adminModel.getPassword() != null) {
+                    admin.get().setPassword(adminModel.getPassword());
+                }
+                adminCrudRepository.save(admin.get());
+                return admin.get();
+            } else {
+                return adminModel;
+            }
+        } else {
+            return adminModel;
+        }
+    }
 }
