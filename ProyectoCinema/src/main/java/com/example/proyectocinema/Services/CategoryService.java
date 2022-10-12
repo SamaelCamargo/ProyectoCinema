@@ -32,5 +32,30 @@ public class CategoryService {
             }
         }
     }
+//RETO4
+    public Category update(Category category){
+        if (category.getId()!=null){
+            Optional<Category>category1=categoryRepository.getCategory(category.getId());
+            if (!category1.isEmpty()){
+                if (category.getDescription()!=null){
+                    category1.get().setDescription(category.getDescription());
+                }
+                if (category.getName()!=null){
+                    category1.get().setName(category.getName());
+                }
+                return categoryRepository.save(category1.get());
+            }
+        }
+        return category;
+    }
+
+    public boolean deleteCategory(int id){
+        boolean d = getCategory(id).map(category -> {
+            categoryRepository.delete(category);
+            return true;
+        }).orElse(false);
+        return d;
+    }
+
 }
 

@@ -20,13 +20,13 @@ public class CinemaController {
 
     private CinemaService cinemaService;
 
-    @GetMapping("/All")
+    @GetMapping("/all")
         public List<Cinema> getAll(){
         return  cinemaService.getAll();
     }
 
-    @GetMapping("{Id}")
-    public Optional<Cinema> getCinema(@PathVariable("Id")int id){
+    @GetMapping("{id}")
+    public Optional<Cinema> getCinema(@PathVariable("id")int id){
         return cinemaService.getCinema(id);
     }
 

@@ -19,7 +19,6 @@ public class CinemaService {
     public Optional<Cinema> getCinema(int id) {
         return cinemaRepository.getCinema(id);
     }
-
     public Cinema save(Cinema cinema) {
         if (cinema.getId() == null) {
             return cinemaRepository.save(cinema);
@@ -32,5 +31,39 @@ public class CinemaService {
             }
         }
     }
+    public Cinema update(Cinema cinema){
+        if (cinema.getId()!=null){
+            Optional<Cinema> cinema1=cinemaRepository.getCinema(cinema.getId());
+            if (!cinema1.isEmpty()){
+                if (cinema.getName()!=null){
+                    cinema1.get().setName(cinema.getName());
+                }
+                if (cinema.getOwner()!=null){
+                    cinema1.get().setOwner(cinema.getOwner());
+                }
+                if (cinema.getCapacity()!=null){
+                    cinema1.get().setCapacity(cinema.getCapacity());
+                }
+                if (cinema.getDescription()!=null){
+                    cinema1.get().setDescription(cinema.getDescription());
+                }
+                if (cinema.getCategory()!=null){
+                    cinema1.get().setCategory(cinema.getCategory());
+                }
+                cinemaRepository.save(cinema1.get());
+                return cinema1.get();
+            }else {
+                return cinema;
+            }
+        }else {
+            return cinema;
+        }
+    }
+            public boolean deleteCinema(int id){
+          Boolean d = getCinema(id).map(cinema -> {
+              cinemaRepository.delete(cinema);
+              return true;
+          }).orElse(false);
+          return d;
+    }
 }
-
