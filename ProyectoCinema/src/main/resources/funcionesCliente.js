@@ -1,6 +1,4 @@
-// https://gc719cfc2d6dc7f-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/open-api-catalog/client/
-const URLPrueba= "https://gc719cfc2d6dc7f-reto1.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/";
-
+const url = "http://localhost:8081/api";
 
 class Clientes{
     static insertClient(){
@@ -13,7 +11,7 @@ class Clientes{
         };
 
         $.ajax({
-            url: URLPrueba+"client"+"/"+"client",
+            url: url+"/Client/save",
             type: "POST",
             dataType: "json",
             crossDomain: true,
@@ -37,7 +35,7 @@ class Clientes{
 
     static loadAllClient(){
         $.ajax({
-            url: URLPrueba+"client"+"/"+"client",
+            url: url+"/Client/all",
             type: "GET",
             dataType: "json",
             crossDomain: true,
@@ -45,7 +43,7 @@ class Clientes{
             success: function(data){
              $("tbody").html("");
              //data.items.sort((a,b)=>a.name.localeCompare(b.name));
-                data.items.sort((a,b)=>a.id - b.id);
+                //data.items.sort((a,b)=>a.id - b.id);
                 for(let index = 0; index < data.items.length; ++index){
                     $("tbody").append(`
                         <tr>
@@ -69,7 +67,7 @@ class Clientes{
 
     static loadByIdClient(id){
         $.ajax({
-            url: URLPrueba+"client"+"/"+"client"+"/"+id ,
+            url: url+"/Client/all/"+id ,
             type: "GET",
             dataType: "json",
             crossDomain: true,
@@ -106,7 +104,7 @@ class Clientes{
         };
 
         $.ajax({
-            url: URLPrueba+"client"+"/"+"client",
+            url: url+"/Client/save",
             type: "PUT",
             dataType: "json",
             crossDomain: true,
@@ -132,7 +130,7 @@ class Clientes{
 
     static deleteByIdClient(id){
         $.ajax({
-            url: URLPrueba+"client"+"/"+"client",
+            url: url+"/Client",
             type: "DELETE",
             dataType: "json",
             crossDomain: true,
