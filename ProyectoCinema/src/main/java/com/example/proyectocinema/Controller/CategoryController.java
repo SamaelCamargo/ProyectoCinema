@@ -1,5 +1,6 @@
 package com.example.proyectocinema.Controller;
 import com.example.proyectocinema.Services.CategoryService;
+import com.example.proyectocinema.model.Admin;
 import com.example.proyectocinema.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,14 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<Category> getAll(){
+        return categoryService.getAll();
+    }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Category> getAllUserAdmin() {
         return categoryService.getAll();
     }
 
