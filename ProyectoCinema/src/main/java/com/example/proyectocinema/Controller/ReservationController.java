@@ -4,6 +4,7 @@ import com.example.proyectocinema.Personalizado.CountClient;
 import com.example.proyectocinema.Personalizado.StatusAmount;
 import com.example.proyectocinema.Services.ReservationService;
 
+import com.example.proyectocinema.model.Client;
 import com.example.proyectocinema.model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,11 @@ public class ReservationController {
         return reservationService.getAll();
     }
 
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Reservation> getAllUserAdmin() {
+        return reservationService.getAll();
+    }
     @GetMapping("/{id}")
     public Optional<Reservation> getReservation(@PathVariable("id") int id){
         return reservationService.getReservation(id);
