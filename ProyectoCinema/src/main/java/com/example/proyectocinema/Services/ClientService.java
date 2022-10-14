@@ -1,13 +1,10 @@
 package com.example.proyectocinema.Services;
-
 import com.example.proyectocinema.Repository.ClientRepository;
 import com.example.proyectocinema.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class ClientService {
     @Autowired
