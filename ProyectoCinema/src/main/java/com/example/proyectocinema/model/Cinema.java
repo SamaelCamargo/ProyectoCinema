@@ -20,10 +20,6 @@ public class Cinema {
     private Integer capacity;
     private String description;
 
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinema","messages"})
-    public List<Reservation>reservations;//private
-
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("cinemas")
@@ -32,6 +28,10 @@ public class Cinema {
     @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
     @JsonIgnoreProperties({"cinema","client"})
     private List<Message> messages;
+
+    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinema","messages"})
+    public List<Reservation>reservations;
 
 
     public Integer getId() {

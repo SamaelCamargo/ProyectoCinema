@@ -1,6 +1,7 @@
 package com.example.proyectocinema.Controller;
 
 import com.example.proyectocinema.Services.ClientService;
+import com.example.proyectocinema.model.Cinema;
 import com.example.proyectocinema.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,14 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
     @GetMapping("/all")
+    @PostMapping("/all")
     public List<Client> getAll(){
+        return clientService.getAll();
+    }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Client> getAllUserAdmin() {
         return clientService.getAll();
     }
 

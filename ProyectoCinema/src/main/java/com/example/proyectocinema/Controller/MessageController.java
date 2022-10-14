@@ -2,6 +2,7 @@ package com.example.proyectocinema.Controller;
 
 import com.example.proyectocinema.Services.MessageService;
 
+import com.example.proyectocinema.model.Client;
 import com.example.proyectocinema.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class MessageController {
 
     @GetMapping("/all")
     public List<Message>getAll(){
+        return messageService.getAll();
+    }
+
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Message> getAllUserAdmin() {
         return messageService.getAll();
     }
 

@@ -27,6 +27,11 @@ public class AdminController {
                 return adminService.getAll();
         }
 
+        @PostMapping("/all")
+        @ResponseStatus(HttpStatus.CREATED)
+        public List<Admin> getAllUserAdmin() {
+                return adminService.getAll();
+        }
 
         @GetMapping("/{id}")
         public Optional<Admin> getAdmin(@PathVariable("id") int id){

@@ -1,7 +1,10 @@
 package com.example.proyectocinema.Controller;
 
+import com.example.proyectocinema.Personalizado.CountClient;
+import com.example.proyectocinema.Personalizado.StatusAmount;
 import com.example.proyectocinema.Services.ReservationService;
 
+import com.example.proyectocinema.model.Client;
 import com.example.proyectocinema.model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +30,11 @@ public class ReservationController {
         return reservationService.getAll();
     }
 
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Reservation> getAllUserAdmin() {
+        return reservationService.getAll();
+    }
     @GetMapping("/{id}")
     public Optional<Reservation> getReservation(@PathVariable("id") int id){
         return reservationService.getReservation(id);
@@ -48,6 +56,20 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete (@PathVariable("id") int id){
         return reservationService.deleteReservation(id);
+    }
+
+    @GetMapping("/report-clients")
+    public List<CountClient> getReservationReportClient(){
+        return reservationService.getTopClients();
+    }
+    @GetMapping("/report-status")
+    public StatusAmount getReservationStatus(){
+        return reservationService.getReservationsStatusReport();
+    }
+    @GetMapping("/report-report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationReportDates(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationPeriod(dateOne, dateTwo);
+
     }
 
 }

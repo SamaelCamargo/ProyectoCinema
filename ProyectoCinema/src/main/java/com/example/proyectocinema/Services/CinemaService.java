@@ -59,7 +59,7 @@ public class CinemaService {
             return cinema;
         }
     }
-            public boolean deleteCinema(int id){
+    public boolean deleteCinema(int id){
           Boolean d = getCinema(id).map(cinema -> {
               cinemaRepository.delete(cinema);
               return true;
