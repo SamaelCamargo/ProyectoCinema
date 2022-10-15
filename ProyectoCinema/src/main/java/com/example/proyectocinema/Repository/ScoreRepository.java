@@ -1,6 +1,7 @@
 package com.example.proyectocinema.Repository;
 
 import com.example.proyectocinema.Repository.Crud.ScoreCrudRepository;
+import com.example.proyectocinema.model.Reservation;
 import com.example.proyectocinema.model.Score;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

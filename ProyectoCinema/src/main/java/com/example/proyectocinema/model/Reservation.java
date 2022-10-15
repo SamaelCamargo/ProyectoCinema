@@ -25,7 +25,13 @@ public class Reservation {
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
 
-    private String score;
+    //se agrega
+    @OneToOne(mappedBy = "reservations")
+    @JsonIgnoreProperties ("reservations")
+    private Score score;
+    //final
+
+
 
     public Integer getIdReservation() {
         return idReservation;
@@ -75,11 +81,13 @@ public class Reservation {
         this.client = client;
     }
 
-    public String getScore() {
+    //se agrega
+    public Score getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Score score) {
         this.score = score;
     }
+    //final
 }

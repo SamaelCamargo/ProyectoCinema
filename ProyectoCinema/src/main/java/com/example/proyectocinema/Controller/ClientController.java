@@ -1,7 +1,7 @@
 package com.example.proyectocinema.Controller;
 
 import com.example.proyectocinema.Services.ClientService;
-import com.example.proyectocinema.model.Cinema;
+
 import com.example.proyectocinema.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class ClientController {
 
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Client> getAllUserAdmin() {
+    public List<Client> getAllClients() {
         return clientService.getAll();
     }
 

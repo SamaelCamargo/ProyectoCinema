@@ -1,9 +1,8 @@
 package com.example.proyectocinema.Controller;
 
-import com.example.proyectocinema.Services.MessageService;
 
-import com.example.proyectocinema.model.Client;
-import com.example.proyectocinema.model.Message;
+import com.example.proyectocinema.Services.ScoreService;
+import com.example.proyectocinema.model.Score;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,52 +11,56 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/Message")
+@RequestMapping("/api/Score")
 @CrossOrigin(origins = "*", methods = {
         RequestMethod.GET,
         RequestMethod.POST,
         RequestMethod.PUT,
         RequestMethod.DELETE
 })
-public class MessageController {
 
-
+public class ScoreController {
     @Autowired
-    private MessageService messageService;
+    private ScoreService scoreService;
 
     @GetMapping("/all")
-    public List<Message>getAll(){
-        return messageService.getAll();
+    public List<Score> getAll(){
+        return scoreService.getAll();
     }
 
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Message> getAllMessages() {
-        return messageService.getAll();
+    public List<Score> getAllScores() {
+        return scoreService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Message> getMessage(@PathVariable("id") int id){
-        return messageService.getMessage(id);
+    public Optional<Score> getScore(@PathVariable("id") int id){
+        return scoreService.getScore(id);
     }
 
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Message save (@RequestBody Message message){
-        return messageService.save(message);
+    public Score save (@RequestBody Score score){
+        return scoreService.save(score);
     }
+
+
     //RETO 4
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Message update (@RequestBody Message message){
-        return messageService.update(message);
+    public Score update (@RequestBody Score score){
+        return scoreService.update(score);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete (@PathVariable("id")int id){
-        return messageService.deleteMessage(id);
+        return scoreService.deleteScore(id);
     }
+
+
 
 
 }
