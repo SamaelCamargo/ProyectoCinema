@@ -31,7 +31,7 @@ public class ReservationController {
 
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Reservation> getAllUserAdmin() {
+    public List<Reservation> getAllReservations() {
         return reservationService.getAll();
     }
     @GetMapping("/{id}")
