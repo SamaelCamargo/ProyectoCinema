@@ -1,18 +1,11 @@
-package com.example.proyectocinema.Services;
+package Services;
 
-import com.example.proyectocinema.DTOs.CountClient;
-import com.example.proyectocinema.DTOs.StatusAmount;
-import com.example.proyectocinema.Repository.ReservationRepository;
+import Repository.ReservationRepository;
 
-import com.example.proyectocinema.model.Reservation;
-
+import model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,35 +57,13 @@ public class ReservationService {
             return reservation;
         }
     }
-    public boolean deleteReservation(int id){
+public boolean deleteReservation(int id){
         Boolean delete =getReservation(id).map(reservation -> {
             reservationRepository.delete(reservation);
             return true;
         }).orElse(false);
         return delete;
-    }
-    public List<CountClient> getTopClients(){
-        return reservationRepository.getTopClients();
-    }
-    public StatusAmount getReservationsStatusReport(){
-        List<Reservation> completed= reservationRepository.getReservationByStatus("completed");
-        List<Reservation> cancelled= reservationRepository.getReservationByStatus("cancelled");
-        return new StatusAmount(completed.size(), cancelled.size());
-    }
-    public List<Reservation> getReservationPeriod(String dateA, String dateB){
-        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
-        Date a = new Date();
-        Date b = new Date();
-        try{
-            a = parser.parse(dateA);
-            b = parser.parse(dateB) ;
-        }catch (ParseException e){
-            e.printStackTrace();
-        }
-        if (a.before(b)){
-            return reservationRepository.getReservationPeriod(a,b);
-        }else {
-            return new ArrayList<>();
-        }
-    }
+}
+
+
 }

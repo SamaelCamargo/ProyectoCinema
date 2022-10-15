@@ -1,5 +1,5 @@
 package com.example.proyectocinema.Repository;
-import com.example.proyectocinema.Personalizado.CountClient;
+import com.example.proyectocinema.DTOs.CountClient;
 import com.example.proyectocinema.Repository.Crud.ReservationCrudRepository;
 import com.example.proyectocinema.model.Client;
 import com.example.proyectocinema.model.Reservation;
@@ -31,6 +31,8 @@ public class ReservationRepository {
     public void delete (Reservation reservation){
         reservationCrudRepository.delete(reservation);
     }
+
+
     public List<CountClient> getTopClients(){
         List<CountClient> resultado = new ArrayList<>();
         List<Object[]> report = reservationCrudRepository.countTotalReservationsByClient();

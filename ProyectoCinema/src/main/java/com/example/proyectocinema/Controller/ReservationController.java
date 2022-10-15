@@ -1,10 +1,9 @@
 package com.example.proyectocinema.Controller;
 
-import com.example.proyectocinema.Personalizado.CountClient;
-import com.example.proyectocinema.Personalizado.StatusAmount;
+import com.example.proyectocinema.DTOs.CountClient;
+import com.example.proyectocinema.DTOs.StatusAmount;
 import com.example.proyectocinema.Services.ReservationService;
 
-import com.example.proyectocinema.model.Client;
 import com.example.proyectocinema.model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,7 +65,7 @@ public class ReservationController {
     public StatusAmount getReservationStatus(){
         return reservationService.getReservationsStatusReport();
     }
-    @GetMapping("/report-report-dates/{dateOne}/{dateTwo}")
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
     public List<Reservation> getReservationReportDates(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
         return reservationService.getReservationPeriod(dateOne, dateTwo);
 
