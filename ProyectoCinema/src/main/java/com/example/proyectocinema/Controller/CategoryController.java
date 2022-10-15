@@ -1,6 +1,5 @@
 package com.example.proyectocinema.Controller;
 import com.example.proyectocinema.Services.CategoryService;
-import com.example.proyectocinema.model.Admin;
 import com.example.proyectocinema.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,5 +40,18 @@ public class CategoryController {
     @ResponseStatus(HttpStatus.CREATED)
     public Category save (@RequestBody Category category){
         return categoryService.save(category);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteCategoy(@PathVariable Integer id) {
+        categoryService.deleteCategory(id);
+        return true;
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category updateCategory(@RequestBody Category categoryModel) {
+        return categoryService.update(categoryModel);
     }
 }

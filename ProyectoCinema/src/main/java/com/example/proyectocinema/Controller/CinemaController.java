@@ -1,6 +1,5 @@
 package com.example.proyectocinema.Controller;
 import com.example.proyectocinema.Services.CinemaService;
-import com.example.proyectocinema.model.Category;
 import com.example.proyectocinema.model.Cinema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,5 +48,11 @@ public class CinemaController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int clientId){
         return cinemaService.deleteCinema(clientId);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cinema updateCinema(@RequestBody Cinema cinemaModel) {
+        return cinemaService.update(cinemaModel);
     }
 }
