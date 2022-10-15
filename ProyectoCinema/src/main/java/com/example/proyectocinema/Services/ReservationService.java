@@ -1,11 +1,11 @@
 package com.example.proyectocinema.Services;
 
-import com.example.proyectocinema.Personalizado.CountClient;
-import com.example.proyectocinema.Personalizado.StatusAmount;
+import com.example.proyectocinema.DTOs.CountClient;
+import com.example.proyectocinema.DTOs.StatusAmount;
 import com.example.proyectocinema.Repository.ReservationRepository;
 
 import com.example.proyectocinema.model.Reservation;
-import javassist.Loader;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

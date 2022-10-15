@@ -1,4 +1,4 @@
-package com.example.proyectocinema.Personalizado;
+package com.example.proyectocinema.DTOs;
 
 import com.example.proyectocinema.model.Client;
 
@@ -7,6 +7,8 @@ public class CountClient {
     private Client client;
 
     public CountClient(Long aLong, Client client) {
+        this.total=aLong;
+        this.client=client;
 
     }
 
