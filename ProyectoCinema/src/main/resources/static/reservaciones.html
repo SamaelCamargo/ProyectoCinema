@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/funcionesReservaciones.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script> 
+    </head>
+    <body>
+        <nav class="bg-gradient-to-r from-indigo-600 to-gray-900 ">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div class="flex h-16 items-center justify-between">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+                  </div>
+                  <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                      <a href="categorias.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Categoria</a>
+        
+                      <a href="cinemas.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cinemas</a>
+        
+                      <a href="clientes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
+        
+                      <a href="mensajes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Mensajes</a>
+        
+                      <a href="reservaciones.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reservaciones</a>
+                    
+                      <a href="reportes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reportes</a>
+                   
+                    </div>
+                  </div>
+                </div>
+              
+             
+              </div>
+            </div>
+        </nav>
+        
+        <h1>Reservaciones</h1>
+        
+        <script type="text/javascript">
+            window.onload = getMachine_Reservation();
+        </script>
+
+        <script type="text/javascript">
+            window.onload = getClient_Reservation();
+        </script>
+
+        <script type="text/javascript">
+            window.onload = getReservaciones();
+        </script>
+
+        <label>Ingrese la fecha de inicio de la reservación</label>
+        <input type="date" id="startDate" placeholder="startDate" ><br>
+        <label>Ingrese la fecha de devolucion de la maquina</label>
+        <input type="date" id="devolutionDate" placeholder="devolutionDate"><br>
+
+        <select  id="status">
+            <option value="completed">completada</option>
+            <option value="cancelled">cancelada</option>
+          </select><br>
+
+        <select id="select-machine"></select><br>
+
+        <select id="select-client"></select><br>
+
+        <button onclick="postReservaciones()" >
+            Crear Reservación
+        </button>
+
+        <div id="resultado1"></div>
+
+    </body>
+
+</html>
