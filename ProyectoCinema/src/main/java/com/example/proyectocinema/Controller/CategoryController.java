@@ -27,7 +27,7 @@ public class CategoryController {
 
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Category> getAllUserAdmin() {
+    public List<Category> getAllCategory() {
         return categoryService.getAll();
     }
 
@@ -44,7 +44,7 @@ public class CategoryController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean deleteCategoy(@PathVariable Integer id) {
+    public boolean deleteCategory(@PathVariable Integer id) {
         categoryService.deleteCategory(id);
         return true;
     }

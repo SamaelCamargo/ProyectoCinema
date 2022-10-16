@@ -28,7 +28,7 @@ public class CinemaController {
 
     @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
-    public List<Cinema> getAllUserAdmin() {
+    public List<Cinema> getAllCinemas() {
         return cinemaService.getAll();
     }
 
