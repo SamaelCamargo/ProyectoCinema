@@ -36,12 +36,35 @@ public class AdminService {
     }
 
     public boolean deleteUserAdministrator(Integer id) {
-        adminRepository.deleteUserAdministrator(id);
-        return true;
+        Boolean d = getAdmin(id).map(client -> {
+            adminRepository.delete(client);
+            return true;
+        }).orElse(false);
+        return d;
+
     }
 
     public Admin updateUserAdministrator(Admin adminModel) {
-        return adminRepository.updateUserAdministrator(adminModel);
+        if (adminModel.getIdAdmin() != null) {
+            Optional<Admin> admin = adminRepository.getAdmin(adminModel.getIdAdmin());
+            if (!admin.isEmpty()) {
+                if (adminModel.getName() != null) {
+                    admin.get().setName(adminModel.getName());
+                }
+                if (adminModel.getEmail() != null) {
+                    admin.get().setEmail(adminModel.getEmail());
+                }
+                if (adminModel.getPassword() != null) {
+                    admin.get().setPassword(adminModel.getPassword());
+                }
+                adminRepository.save(admin.get());
+                return admin.get();
+            } else {
+                return adminModel;
+            }
+        } else {
+            return adminModel;
+        }
     }
 
 }
