@@ -26,8 +26,8 @@ public class Reservation {
     private Client client;
 
     //se agrega
-    @OneToOne(mappedBy = "reservations")
-    @JsonIgnoreProperties ("reservations")
+    @OneToOne(mappedBy = "reservation")
+    @JsonIgnoreProperties ("reservation")
     private Score score;
     //final
 
