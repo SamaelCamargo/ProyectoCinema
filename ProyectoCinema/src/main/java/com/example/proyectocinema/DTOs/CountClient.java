@@ -7,8 +7,8 @@ public class CountClient {
     private Client client;
 
     public CountClient(Long aLong, Client client) {
-        this.total=aLong;
-        this.client=client;
+        this.total = aLong;
+        this.client = client;
 
     }
 

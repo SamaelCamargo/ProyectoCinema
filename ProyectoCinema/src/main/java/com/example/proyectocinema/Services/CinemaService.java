@@ -1,8 +1,10 @@
 package com.example.proyectocinema.Services;
+
 import com.example.proyectocinema.Repository.CinemaRepository;
 import com.example.proyectocinema.model.Cinema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,7 @@ public class CinemaService {
     public Optional<Cinema> getCinema(int id) {
         return cinemaRepository.getCinema(id);
     }
+
     public Cinema save(Cinema cinema) {
         if (cinema.getId() == null) {
             return cinemaRepository.save(cinema);
@@ -31,39 +34,41 @@ public class CinemaService {
             }
         }
     }
-    public Cinema update(Cinema cinema){
-        if (cinema.getId()!=null){
-            Optional<Cinema> cinema1=cinemaRepository.getCinema(cinema.getId());
-            if (!cinema1.isEmpty()){
-                if (cinema.getName()!=null){
+
+    public Cinema update(Cinema cinema) {
+        if (cinema.getId() != null) {
+            Optional<Cinema> cinema1 = cinemaRepository.getCinema(cinema.getId());
+            if (!cinema1.isEmpty()) {
+                if (cinema.getName() != null) {
                     cinema1.get().setName(cinema.getName());
                 }
-                if (cinema.getOwner()!=null){
+                if (cinema.getOwner() != null) {
                     cinema1.get().setOwner(cinema.getOwner());
                 }
-                if (cinema.getCapacity()!=null){
+                if (cinema.getCapacity() != null) {
                     cinema1.get().setCapacity(cinema.getCapacity());
                 }
-                if (cinema.getDescription()!=null){
+                if (cinema.getDescription() != null) {
                     cinema1.get().setDescription(cinema.getDescription());
                 }
-                if (cinema.getCategory()!=null){
+                if (cinema.getCategory() != null) {
                     cinema1.get().setCategory(cinema.getCategory());
                 }
                 cinemaRepository.save(cinema1.get());
                 return cinema1.get();
-            }else {
+            } else {
                 return cinema;
             }
-        }else {
+        } else {
             return cinema;
         }
     }
-    public boolean deleteCinema(int id){
-          Boolean d = getCinema(id).map(cinema -> {
-              cinemaRepository.delete(cinema);
-              return true;
-          }).orElse(false);
-          return d;
+
+    public boolean deleteCinema(int id) {
+        Boolean d = getCinema(id).map(cinema -> {
+            cinemaRepository.delete(cinema);
+            return true;
+        }).orElse(false);
+        return d;
     }
 }

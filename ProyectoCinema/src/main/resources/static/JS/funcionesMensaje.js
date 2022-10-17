@@ -1,7 +1,7 @@
 const ApiURLMensaje = "https://g27031629e0c94a-m4bhscnvjmmafkv8.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/message/message";
 
-class Comentario{
-    static insertarMensaje(){
+class Comentario {
+    static insertarMensaje() {
         //Cuerpo de envio
         const menssaje = {
             id: $("#idMensaje").val(),
@@ -15,31 +15,31 @@ class Comentario{
             crossDomain: true,
             data: JSON.stringify(menssaje),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 201) {
                     $("#idMensaje").val(""),
-                    $("#nombreMensaje").val(""),                    
-                    $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
+                        $("#nombreMensaje").val(""),
+                        $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
                     Comentario.loadAll();
                     alert("Mensaje agregado");
-                }else{
+                } else {
                     alert("Mensaje no agregado");
                 }
             }
         });
     }
 
-    static loadAll(){
+    static loadAll() {
         $.ajax({
             url: ApiURLMensaje,
             type: "GET",
             dataType: "json",
             crossDomain: true,
             contentType: "application/json",
-            success: function(data){
+            success: function (data) {
                 $("tbody").html("");
 
-                for(let index = 0; index < data.items.length; ++index){
+                for (let index = 0; index < data.items.length; ++index) {
                     $("tbody").append(`
                     <tr>
                         <td>${data.items[index].id}</td>
@@ -50,24 +50,24 @@ class Comentario{
                     `);
                 }
             },
-            error: function(){
+            error: function () {
                 alert("se produjo un error, los mensajes no fueron cargados")
             }
         });
     }
 
-    static loadByIdMensaje(id){
+    static loadByIdMensaje(id) {
         $.ajax({
-            url: ApiURLMensaje+"/"+id,
+            url: ApiURLMensaje + "/" + id,
             type: "GET",
             dataType: "json",
             crossDomain: true,
             contentType: "application/json",
-            success: function(data){
-                if (data.items.length===0){
+            success: function (data) {
+                if (data.items.length === 0) {
                     alert("Mensaje no existe");
-                }else{
-                $("#detallesMensaje").html(`
+                } else {
+                    $("#detallesMensaje").html(`
                     <p><b>Id:</b> ${(data.items[0].id)} </p>
                     <p><b>Mensaje:</b> ${data.items[0].messagetext}</p>
                     <button onclick="Comentario.deleteById(${(data.items[0].id)})"type="button" id="EliminarMensaje" class="btn btn-danger">ELIMINAR</button>
@@ -75,13 +75,13 @@ class Comentario{
                 `);
                 }
             },
-            error: function(){
+            error: function () {
                 alert("se produjo un error, el mensaje seleccionado no pudo ser cargado");
             }
         });
     }
 
-    static actualizarMensaje(){
+    static actualizarMensaje() {
         //Cuerpo de envio
         const menssaje = {
             id: $("#idMensaje").val(),
@@ -95,21 +95,21 @@ class Comentario{
             crossDomain: true,
             data: JSON.stringify(menssaje),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 201) {
                     $("#idMensaje").val(""),
-                    $("#nombreMensaje").val(""),                    
-                    $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
+                        $("#nombreMensaje").val(""),
+                        $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
                     Comentario.loadAll();
                     alert("Mensaje actualizado");
-                }else{
+                } else {
                     alert("Mensaje no actualizado");
                 }
             }
         });
     }
 
-    static deleteById(id){
+    static deleteById(id) {
         $.ajax({
             url: ApiURLMensaje,
             type: "DELETE",
@@ -117,12 +117,12 @@ class Comentario{
             crossDomain: true,
             data: JSON.stringify({id}),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 204) {
                     $("#detallesMensaje").html("<p>Seleccione un mensaje</p>")
                     Comentario.loadAll();
                     alert("Mensaje eliminado");
-                }else{
+                } else {
                     alert("Mensaje  eliminado");
                 }
             }

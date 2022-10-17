@@ -6,14 +6,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="reservation")
+@Table(name = "reservation")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
-    private String status ="created";
+    private String status = "created";
 
     @ManyToOne
     @JoinColumn(name = "id")
@@ -22,15 +22,14 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"reservations","messages"})
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
     //se agrega
     @OneToOne(mappedBy = "reservation")
-    @JsonIgnoreProperties ("reservation")
+    @JsonIgnoreProperties("reservation")
     private Score score;
     //final
-
 
 
     public Integer getIdReservation() {

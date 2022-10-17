@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
-@Table(name="score")
+@Table(name = "score")
 public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,7 +60,8 @@ public class Score {
     public Reservation getReservation() {
         return reservation;
     }
-   //se agrega:
+
+    //se agrega:
     public void setReservation(Reservation reservations) {
         this.reservation = reservations;
     }

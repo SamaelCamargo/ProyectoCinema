@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="category")
+@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,9 @@ public class Category {
     private String name;
     private String description;
 
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "category")
-    @JsonIgnoreProperties ("category")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category")
+    @JsonIgnoreProperties("category")
     private List<Cinema> cinemas;
-
 
 
     public Integer getId() {

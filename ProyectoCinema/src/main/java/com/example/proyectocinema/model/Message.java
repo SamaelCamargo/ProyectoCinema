@@ -4,8 +4,9 @@ package com.example.proyectocinema.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+
 @Entity
-@Table(name="message")
+@Table(name = "message")
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,12 +15,12 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "id")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Cinema cinema;
 
     @ManyToOne
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"messages","reservations"})
+    @JsonIgnoreProperties({"messages", "reservations"})
     private Client client;
 
     public Integer getIdMessage() {

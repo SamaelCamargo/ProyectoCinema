@@ -1,7 +1,7 @@
 const url = "http://localhost:8081/api";
 
-class Clientes{
-    static insertClient(){
+class Clientes {
+    static insertClient() {
         //Cuerpo de envio
         const Cliente = {
             id: $("#idCliente").val(),
@@ -11,13 +11,13 @@ class Clientes{
         };
 
         $.ajax({
-            url: url+"/Client/save",
+            url: url + "/Client/save",
             type: "POST",
             dataType: "json",
             crossDomain: true,
             data: JSON.stringify(Cliente),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 201) {
                     $("#idCliente").val("");
                     $("#nombreCliente").val("");
@@ -26,25 +26,25 @@ class Clientes{
                     $("#detallesCliente").html("<p>Seleccione un cliente</p>")
                     Clientes.loadAllClient();
                     alert("Cliente guardado");
-                }else{
+                } else {
                     alert("se produjo un error, el cliente no fue guardado");
                 }
             }
         });
     }
 
-    static loadAllClient(){
+    static loadAllClient() {
         $.ajax({
-            url: url+"/Client/all",
+            url: url + "/Client/all",
             type: "GET",
             dataType: "json",
             crossDomain: true,
             contentType: "application/json",
-            success: function(data){
-             $("tbody").html("");
-             //data.items.sort((a,b)=>a.name.localeCompare(b.name));
+            success: function (data) {
+                $("tbody").html("");
+                //data.items.sort((a,b)=>a.name.localeCompare(b.name));
                 //data.items.sort((a,b)=>a.id - b.id);
-                for(let index = 0; index < data.items.length; ++index){
+                for (let index = 0; index < data.items.length; ++index) {
                     $("tbody").append(`
                         <tr>
                             <td>${data.items[index].id}</td>
@@ -57,26 +57,26 @@ class Clientes{
                         `);
 
 
-            }
-        },
-            error:function(){
+                }
+            },
+            error: function () {
                 alert("se produjo un error, los clientes no fueron cargados");
             }
         });
     }
 
-    static loadByIdClient(id){
+    static loadByIdClient(id) {
         $.ajax({
-            url: url+"/Client/all/"+id ,
+            url: url + "/Client/all/" + id,
             type: "GET",
             dataType: "json",
             crossDomain: true,
             contentType: "application/json",
-            success: function(data){
-                if (data.items.length===0){
+            success: function (data) {
+                if (data.items.length === 0) {
                     alert("Cliente no existe");
-                }else{
-                $("#detallesCliente").html(`
+                } else {
+                    $("#detallesCliente").html(`
                     <p><b>Id:</b> ${(data.items[0].id)} </p>
                     <p><b>Nombre:</b>${(data.items[0].name)}</p>
                     <p><b>Email:</b>${(data.items[0].email)}</p>
@@ -88,14 +88,14 @@ class Clientes{
                 `);
                 }
             },
-            error:function(){
+            error: function () {
                 alert("se produjo un error, el cliente seleccionado no pudo ser cargado");
             }
         });
 
     }
 
-    static updateClient(){
+    static updateClient() {
         const Cliente = {
             id: $("#idCliente").val(),
             name: $("#nombreCliente").val(),
@@ -104,13 +104,13 @@ class Clientes{
         };
 
         $.ajax({
-            url: url+"/Client/save",
+            url: url + "/Client/save",
             type: "PUT",
             dataType: "json",
             crossDomain: true,
             data: JSON.stringify(Cliente),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 201) {
 
                     $("#idCliente").val("");
@@ -120,33 +120,33 @@ class Clientes{
                     $("#detallesCliente").html("<p>Seleccione un cliente</p>")
                     Clientes.loadAllClient();
                     alert("Cliente fue actualizado con exito");
-                }else{
+                } else {
                     alert("se produjo un error, el cliente no fue actualizado");
                 }
             }
         });
-        
+
     }
 
-    static deleteByIdClient(id){
+    static deleteByIdClient(id) {
         $.ajax({
-            url: url+"/Client",
+            url: url + "/Client",
             type: "DELETE",
             dataType: "json",
             crossDomain: true,
             data: JSON.stringify({id}),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 204) {
                     $("#detallesCliente").html("<p>Seleccione un cliente</p>")
                     Clientes.loadAllClient();
                     alert("Cliente fue eliminado con exito");
-                    
-                }else{
+
+                } else {
                     alert("se produjo un error, el cliente no fue eliminado");
                 }
             }
         });
-        
+
     }
 }

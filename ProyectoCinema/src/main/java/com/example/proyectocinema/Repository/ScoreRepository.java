@@ -15,19 +15,19 @@ public class ScoreRepository {
     private ScoreCrudRepository scoreCrudRepository;
 
 
-    public List<Score> getAll(){
+    public List<Score> getAll() {
         return (List<Score>) scoreCrudRepository.findAll();
     }
 
-    public Optional<Score> getScore(int id){
+    public Optional<Score> getScore(int id) {
         return scoreCrudRepository.findById(id);
     }
 
-    public Score save (Score score){
+    public Score save(Score score) {
         return scoreCrudRepository.save(score);
     }
 
-    public void delete (Score score){
+    public void delete(Score score) {
         scoreCrudRepository.delete(score);
     }
 

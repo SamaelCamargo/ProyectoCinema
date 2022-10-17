@@ -18,43 +18,43 @@ import java.util.Optional;
         RequestMethod.DELETE
 })
 public class AdminController {
-        @Autowired
-        private AdminService adminService;
+    @Autowired
+    private AdminService adminService;
 
-        @GetMapping(path = "/all")
-        @PostMapping("/all")
-        public List<Admin> getAll(){
-                return adminService.getAll();
-        }
+    @GetMapping(path = "/all")
+    @PostMapping("/all")
+    public List<Admin> getAll() {
+        return adminService.getAll();
+    }
 
-        @PostMapping("/all")
-        @ResponseStatus(HttpStatus.CREATED)
-        public List<Admin> getAllUserAdmin() {
-                return adminService.getAll();
-        }
+    @PostMapping("/all")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Admin> getAllUserAdmin() {
+        return adminService.getAll();
+    }
 
-        @GetMapping("/{id}")
-        public Optional<Admin> getAdmin(@PathVariable("id") int id){
-                return adminService.getAdmin(id);
-        }
+    @GetMapping("/{id}")
+    public Optional<Admin> getAdmin(@PathVariable("id") int id) {
+        return adminService.getAdmin(id);
+    }
 
-        @PostMapping("/save")
-        @ResponseStatus(HttpStatus.CREATED)
-        public Admin save(@RequestBody Admin admin){
-                return adminService.save(admin);
-        }
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Admin save(@RequestBody Admin admin) {
+        return adminService.save(admin);
+    }
 
-        @DeleteMapping("/{id}")
-        @ResponseStatus(HttpStatus.NO_CONTENT)
-        public boolean deleteUserAdministratorModel(@PathVariable Integer id) {
-                adminService.deleteUserAdministrator(id);
-                return true;
-        }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteUserAdministratorModel(@PathVariable Integer id) {
+        adminService.deleteUserAdministrator(id);
+        return true;
+    }
 
-        @PutMapping("/update")
-        @ResponseStatus(HttpStatus.CREATED)
-        public Admin updateUserAdministrator(@RequestBody Admin adminModel) {
-                return adminService.updateUserAdministrator(adminModel);
-        }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Admin updateUserAdministrator(@RequestBody Admin adminModel) {
+        return adminService.updateUserAdministrator(adminModel);
+    }
 
 }

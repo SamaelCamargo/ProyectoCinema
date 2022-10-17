@@ -1,8 +1,10 @@
 package com.example.proyectocinema.Services;
+
 import com.example.proyectocinema.Repository.CategoryRepository;
 import com.example.proyectocinema.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -32,15 +34,16 @@ public class CategoryService {
             }
         }
     }
-//RETO4
-    public Category update(Category category){
-        if (category.getId()!=null){
-            Optional<Category>category1=categoryRepository.getCategory(category.getId());
-            if (!category1.isEmpty()){
-                if (category.getDescription()!=null){
+
+    //RETO4
+    public Category update(Category category) {
+        if (category.getId() != null) {
+            Optional<Category> category1 = categoryRepository.getCategory(category.getId());
+            if (!category1.isEmpty()) {
+                if (category.getDescription() != null) {
                     category1.get().setDescription(category.getDescription());
                 }
-                if (category.getName()!=null){
+                if (category.getName() != null) {
                     category1.get().setName(category.getName());
                 }
                 return categoryRepository.save(category1.get());
@@ -49,7 +52,7 @@ public class CategoryService {
         return category;
     }
 
-    public boolean deleteCategory(int id){
+    public boolean deleteCategory(int id) {
         boolean d = getCategory(id).map(category -> {
             categoryRepository.delete(category);
             return true;
