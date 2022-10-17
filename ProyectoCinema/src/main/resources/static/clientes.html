@@ -14,83 +14,84 @@
 
 <body onload="Clientes.loadAllClient()">
 
-    <div class="container" id="cliente">
+<div class="container" id="cliente">
 
-        <h5 class="card-header">CLIENTES</h5>
-        <br>
-        <br>
-        <h5 class="card-title">Registro de Cliente </h5>
+    <h5 class="card-header">CLIENTES</h5>
+    <br>
+    <br>
+    <h5 class="card-title">Registro de Cliente </h5>
 
 
-        <form class="left-panel">
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="idCliente" class="form-label">ID</label>
-                    <input min="1" type="number" class="form-control" id="idCliente"
-                        placeholder="Identificación del Cliente">
-                </div>
-                <div class="col">
-                    <label for="nombreCliente" class="form-label">CLIENTE</label>
-                    <input type="text" class="form-control" id="nombreCliente" type="text"
-                        placeholder="Nombre del Cliente">
-                </div>
+    <form class="left-panel">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="idCliente" class="form-label">ID</label>
+                <input min="1" type="number" class="form-control" id="idCliente"
+                       placeholder="Identificación del Cliente">
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label for="email" class="form-label">EMAIL</label>
-                    <input type="email" class="form-control" id="email" type="text"
-                        placeholder="Digite el email del Cliente">
-                </div>
-                <div class="col">
-                    <label for="edad" class="form-label">EDAD</label>
-                    <input min="1" type="number" class="form-control" id="edad"
-                        placeholder="Digite la edad del Cliente">
-                </div>
+            <div class="col">
+                <label for="nombreCliente" class="form-label">CLIENTE</label>
+                <input type="text" class="form-control" id="nombreCliente" type="text"
+                       placeholder="Nombre del Cliente">
             </div>
-            <button onclick="Clientes.insertClient()" type="button" id="insertarCliente"
-                class="btn btn-success">INSERTAR</button>
-            <button onclick="Clientes.updateClient()" type="button" id="actualizarCliente"
-                class="btn btn-primary">ACTUALIZAR</button>              
-            
-        </form><br>
-        <a href="index.html" class="btn btn-success">Ir al menu de inicio</a>
-        <br>
-        <br>
-        <h5 class="card-title">Clientes </h5>
-        <div class="right-panel">
-            <table class="table table-bordered border-success" id="tablaClientes">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">NOMBRE</th>
-                        <th scope="col">EMAIL</th>
-                        <th scope="col">EDAD</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4">No hay clientes registrados...</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <br>
-            <h5 class="card-title">Detalle de Clientes</h5>
-
-            <div id="detallesCliente">
-                <p>Seleccione un cliente</p>
-            </div>
-
-            <br>
-            <br>
-
         </div>
-    </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="email" class="form-label">EMAIL</label>
+                <input type="email" class="form-control" id="email" type="text"
+                       placeholder="Digite el email del Cliente">
+            </div>
+            <div class="col">
+                <label for="edad" class="form-label">EDAD</label>
+                <input min="1" type="number" class="form-control" id="edad"
+                       placeholder="Digite la edad del Cliente">
+            </div>
+        </div>
+        <button onclick="Clientes.insertClient()" type="button" id="insertarCliente"
+                class="btn btn-success">INSERTAR
+        </button>
+        <button onclick="Clientes.updateClient()" type="button" id="actualizarCliente"
+                class="btn btn-primary">ACTUALIZAR
+        </button>
 
+    </form>
+    <br>
+    <a href="index.html" class="btn btn-success">Ir al menu de inicio</a>
+    <br>
+    <br>
+    <h5 class="card-title">Clientes </h5>
+    <div class="right-panel">
+        <table class="table table-bordered border-success" id="tablaClientes">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">EDAD</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="4">No hay clientes registrados...</td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h5 class="card-title">Detalle de Clientes</h5>
+
+        <div id="detallesCliente">
+            <p>Seleccione un cliente</p>
+        </div>
+
+        <br>
+        <br>
+
+    </div>
+</div>
 
 
 </body>
-
 
 
 </html>

@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import java.util.List;
 
 @Entity
-@Table(name="cinema")
+@Table(name = "cinema")
 
 public class Cinema {
     @Id
@@ -25,13 +25,13 @@ public class Cinema {
     @JsonIgnoreProperties("cinemas")
     private Category category;
 
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinema","client"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinema", "client"})
     private List<Message> messages;
 
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy = "cinema")
-    @JsonIgnoreProperties({"cinema","messages"})
-    public List<Reservation>reservations;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @JsonIgnoreProperties({"cinema", "messages"})
+    public List<Reservation> reservations;
 
 
     public Integer getId() {

@@ -1,4 +1,4 @@
-body{
+body {
     display: block;
 }
 
@@ -10,15 +10,15 @@ table {
     width: 50%;
 }
 
-input{
+input {
     width: 75%;
 }
 
-.left-panel{
+.left-panel {
     width: 40%;
 }
 
-.right-panel{
+.right-panel {
     width: 100%;
 }
 
@@ -31,4 +31,4 @@ input{
     -webkit-border-radius: 38px;
     -moz-border-radius: 38px;
     border-radius: 38px;
-  }
+}

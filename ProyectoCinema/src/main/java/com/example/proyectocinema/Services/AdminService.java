@@ -14,22 +14,22 @@ public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
 
-    public List<Admin> getAll(){
+    public List<Admin> getAll() {
         return adminRepository.getAll();
     }
 
-    public Optional<Admin> getAdmin(int id){
+    public Optional<Admin> getAdmin(int id) {
         return adminRepository.getAdmin(id);
     }
 
-    public Admin save(Admin admin){
-        if (admin.getIdAdmin()== null){
+    public Admin save(Admin admin) {
+        if (admin.getIdAdmin() == null) {
             return adminRepository.save(admin);
-        }else{
+        } else {
             Optional<Admin> client1 = adminRepository.getAdmin(admin.getIdAdmin());
-            if(client1.isEmpty()){
+            if (client1.isEmpty()) {
                 return adminRepository.save(admin);
-            }else{
+            } else {
                 return admin;
             }
         }
