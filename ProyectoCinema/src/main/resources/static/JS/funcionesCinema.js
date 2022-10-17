@@ -1,6 +1,7 @@
 const url = "http://localhost:8081/api";
-class Cinema{
-    static insert(){
+
+class Cinema {
+    static insert() {
         //Cuerpo de envio
         const cinema = {
             id: $("#idCinema").val(),
@@ -11,40 +12,40 @@ class Cinema{
         }
 
         $.ajax({
-            url: url+"/Cinema/save",
+            url: url + "/Cinema/save",
             type: "POST",
             dataType: "json",
             crossDomain: true,
             data: JSON.stringify(cinema),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 201) {
                     $("#idCinema").val(""),
-                    $("#propietarioCinema").val(""),
-                    $("#capacidadCinema").val(""),
-                    $("#categoriaCinema").val(""),
-                    $("#nombreCinema").val(""),                    
-                    $("#detallesCinema").html("<p>Seleccione un cinema</p>")
+                        $("#propietarioCinema").val(""),
+                        $("#capacidadCinema").val(""),
+                        $("#categoriaCinema").val(""),
+                        $("#nombreCinema").val(""),
+                        $("#detallesCinema").html("<p>Seleccione un cinema</p>")
                     Cinema.loadAll();
                     alert("Cinema agregado");
-                }else{
+                } else {
                     alert("Cinema no agregado");
                 }
             }
         });
     }
 
-    static loadAll(){
+    static loadAll() {
         $.ajax({
-            url: url+"/Cinema/all",
+            url: url + "/Cinema/all",
             type: "GET",
             dataType: "json",
             crossDomain: true,
             contentType: "application/json",
-            success: function(data){
+            success: function (data) {
                 $("tbody").html("");
 
-                for(let index = 0; index < data.items.length; index++){
+                for (let index = 0; index < data.items.length; index++) {
                     $("tbody").append(`
                     <tr>
                         <td>${data.items[index].id}</td>
@@ -58,24 +59,24 @@ class Cinema{
                     `);
                 }
             },
-            error: function(){
+            error: function () {
                 alert("se produjo un error, los cinemas no fueron cargados")
             }
         });
     }
 
-    static loadById(id){
+    static loadById(id) {
         $.ajax({
-            url: ApiURLCinema+"/"+id,
+            url: ApiURLCinema + "/" + id,
             type: "GET",
             dataType: "json",
             crossDomain: true,
             contentType: "application/json",
-            success: function(data){
-                if (data.items.length===0){
+            success: function (data) {
+                if (data.items.length === 0) {
                     alert("Cinema no existe");
-                }else{
-                $("#detallesCinema").html(`
+                } else {
+                    $("#detallesCinema").html(`
                     <p><b>Id:</b> ${(data.items[0].id)} </p>
                     <p><b>Propietario:</b> ${data.items[0].owner}</p>
                     <p><b>Capacidad:</b> ${data.items[0].capacity}</p>
@@ -86,19 +87,19 @@ class Cinema{
                 `);
                 }
             },
-            error: function(){
+            error: function () {
                 alert("se produjo un error, el cinema seleccionado no pudo ser cargado");
             }
         });
     }
 
-    static update(){
+    static update() {
         const cinema = {
-            id:             $("#idCinema").val(),
-            owner:          $("#propietarioCinema").val(),
-            capacity:       $("#capacidadCinema").val(),
-            category_ID:    $("#categoriaCinema").val(),
-            name:           $("#nombreCinema").val()
+            id: $("#idCinema").val(),
+            owner: $("#propietarioCinema").val(),
+            capacity: $("#capacidadCinema").val(),
+            category_ID: $("#categoriaCinema").val(),
+            name: $("#nombreCinema").val()
         }
 
         $.ajax({
@@ -108,24 +109,24 @@ class Cinema{
             crossDomain: true,
             data: JSON.stringify(cinema),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 201) {
                     $("#idCinema").val(""),
-                    $("#propietarioCinema").val(""),
-                    $("#capacidadCinema").val(""),
-                    $("#categoriaCinema").val(""),
-                    $("#nombreCinema").val(""),                    
-                    $("#detallesCinema").html("<p>Seleccione un cinema</p>")
+                        $("#propietarioCinema").val(""),
+                        $("#capacidadCinema").val(""),
+                        $("#categoriaCinema").val(""),
+                        $("#nombreCinema").val(""),
+                        $("#detallesCinema").html("<p>Seleccione un cinema</p>")
                     Cinema.loadAll();
                     alert("Cinema actualizado");
-                }else{
+                } else {
                     alert("Cinema no se pudo actualizar");
                 }
             }
         });
     }
 
-    static deleteById(id){
+    static deleteById(id) {
         $.ajax({
             url: ApiURLCinema,
             type: "DELETE",
@@ -133,12 +134,12 @@ class Cinema{
             crossDomain: true,
             data: JSON.stringify({id}),
             contentType: "application/json",
-            complete: function(response){
+            complete: function (response) {
                 if (response.status === 204) {
                     $("#detallesCinema").html("<p>Seleccione un cliente</p>")
                     Cinema.loadAll();
                     alert("Cinema eliminado");
-                }else{
+                } else {
                     alert("Cinema no sea a eliminado");
                 }
             }

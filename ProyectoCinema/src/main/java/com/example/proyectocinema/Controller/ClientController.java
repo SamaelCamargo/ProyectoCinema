@@ -21,9 +21,10 @@ import java.util.Optional;
 public class ClientController {
     @Autowired
     private ClientService clientService;
+
     @GetMapping("/all")
     @PostMapping("/all")
-    public List<Client> getAll(){
+    public List<Client> getAll() {
         return clientService.getAll();
     }
 
@@ -34,13 +35,13 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Client> getClient(@PathVariable("id") int id){
+    public Optional<Client> getClient(@PathVariable("id") int id) {
         return clientService.getClient(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client client){
+    public Client save(@RequestBody Client client) {
         return clientService.save(client);
     }
 
@@ -52,7 +53,7 @@ public class ClientController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int clientId){
+    public boolean delete(@PathVariable("id") int clientId) {
         return clientService.deleteClient(clientId);
     }
 }

@@ -21,13 +21,15 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    public List<Reservation> getAll(){
+    public List<Reservation> getAll() {
         return reservationRepository.getAll();
     }
-    public Optional<Reservation> getReservation(int id){
-        return reservationRepository.getReservation(id);}
 
-    public Reservation save (Reservation reservation) {
+    public Optional<Reservation> getReservation(int id) {
+        return reservationRepository.getReservation(id);
+    }
+
+    public Reservation save(Reservation reservation) {
         if (reservation.getIdReservation() == null) {
             return reservationRepository.save(reservation);
         } else {
@@ -39,59 +41,64 @@ public class ReservationService {
             }
         }
     }
-    //RETO 4
-    public Reservation update (Reservation reservation){
-        if (reservation.getIdReservation()!=null){
-            Optional<Reservation>reservation1=reservationRepository.getReservation(reservation.getIdReservation());
-            if (!reservation1.isEmpty()){
 
-                if(reservation.getStartDate()!=null){
+    //RETO 4
+    public Reservation update(Reservation reservation) {
+        if (reservation.getIdReservation() != null) {
+            Optional<Reservation> reservation1 = reservationRepository.getReservation(reservation.getIdReservation());
+            if (!reservation1.isEmpty()) {
+
+                if (reservation.getStartDate() != null) {
                     reservation1.get().setStartDate(reservation.getStartDate());
                 }
-                if(reservation.getDevolutionDate()!=null){
+                if (reservation.getDevolutionDate() != null) {
                     reservation1.get().setDevolutionDate(reservation.getDevolutionDate());
                 }
-                if (reservation.getStatus()!=null){
+                if (reservation.getStatus() != null) {
                     reservation1.get().setStatus(reservation.getStatus());
 
                 }
                 reservationRepository.save(reservation1.get());
                 return reservation1.get();
-            }else {
+            } else {
                 return reservation;
             }
-        }else {
+        } else {
             return reservation;
         }
     }
-    public boolean deleteReservation(int id){
-        Boolean delete =getReservation(id).map(reservation -> {
+
+    public boolean deleteReservation(int id) {
+        Boolean delete = getReservation(id).map(reservation -> {
             reservationRepository.delete(reservation);
             return true;
         }).orElse(false);
         return delete;
     }
-    public List<CountClient> getTopClients(){
+
+    public List<CountClient> getTopClients() {
         return reservationRepository.getTopClients();
     }
-    public StatusAmount getReservationsStatusReport(){
-        List<Reservation> completed= reservationRepository.getReservationByStatus("completed");
-        List<Reservation> cancelled= reservationRepository.getReservationByStatus("cancelled");
+
+    public StatusAmount getReservationsStatusReport() {
+        List<Reservation> completed = reservationRepository.getReservationByStatus("completed");
+        List<Reservation> cancelled = reservationRepository.getReservationByStatus("cancelled");
         return new StatusAmount(completed.size(), cancelled.size());
     }
-    public List<Reservation> getReservationPeriod(String dateA, String dateB){
+
+    public List<Reservation> getReservationPeriod(String dateA, String dateB) {
         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
         Date a = new Date();
         Date b = new Date();
-        try{
+        try {
             a = parser.parse(dateA);
-            b = parser.parse(dateB) ;
-        }catch (ParseException e){
+            b = parser.parse(dateB);
+        } catch (ParseException e) {
             e.printStackTrace();
         }
-        if (a.before(b)){
-            return reservationRepository.getReservationPeriod(a,b);
-        }else {
+        if (a.before(b)) {
+            return reservationRepository.getReservationPeriod(a, b);
+        } else {
             return new ArrayList<>();
         }
     }

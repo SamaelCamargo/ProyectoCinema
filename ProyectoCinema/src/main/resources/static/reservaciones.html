@@ -1,76 +1,88 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="jquery-3.6.1.min.js"></script>
-        <script type="text/javascript" src="js/funcionesReservaciones.js"></script>
-        <script src="https://cdn.tailwindcss.com"></script> 
-    </head>
-    <body>
-        <nav class="bg-gradient-to-r from-indigo-600 to-gray-900 ">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div class="flex h-16 items-center justify-between">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0">
-                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-                  </div>
-                  <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                      <a href="categorias.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Categoria</a>
-        
-                      <a href="cinemas.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cinemas</a>
-        
-                      <a href="clientes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
-        
-                      <a href="mensajes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Mensajes</a>
-        
-                      <a href="reservaciones.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reservaciones</a>
-                    
-                      <a href="reportes.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reportes</a>
-                   
-                    </div>
-                  </div>
+<head>
+    <title>Cinema Mision Tic 2022</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="JS/funcionesReservaciones.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<nav class="bg-gradient-to-r from-indigo-600 to-gray-900 ">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                         alt="Your Company">
                 </div>
-              
-             
-              </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="index.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                           aria-current="page">Home</a>
+
+                        <a href="categorias.html"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categoria</a>
+
+                        <a href="cinemas.html"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cinemas</a>
+
+                        <a href="clientes.html"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
+
+                        <a href="mensajes.html"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Mensajes</a>
+
+                        <a href="reportes.html"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reportes</a>
+                    </div>
+                </div>
             </div>
-        </nav>
-        
-        <h1>Reservaciones</h1>
-        
-        <script type="text/javascript">
-            window.onload = getMachine_Reservation();
-        </script>
+        </div>
+    </div>
+</nav>
 
-        <script type="text/javascript">
-            window.onload = getClient_Reservation();
-        </script>
-
-        <script type="text/javascript">
-            window.onload = getReservaciones();
-        </script>
-
-        <label>Ingrese la fecha de inicio de la reservación</label>
-        <input type="date" id="startDate" placeholder="startDate" ><br>
-        <label>Ingrese la fecha de devolucion de la maquina</label>
-        <input type="date" id="devolutionDate" placeholder="devolutionDate"><br>
-
-        <select  id="status">
-            <option value="completed">completada</option>
-            <option value="cancelled">cancelada</option>
-          </select><br>
-
-        <select id="select-machine"></select><br>
-
-        <select id="select-client"></select><br>
-
-        <button onclick="postReservaciones()" >
-            Crear Reservación
-        </button>
-
-        <div id="resultado1"></div>
-
-    </body>
-
-</html>
+<section class="text-gray-400 bg-gray-900 body-font relative">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Reservaciones</h1>
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <div class="flex flex-wrap -m-2">
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <label for="IdCinema" class="leading-7 text-sm text-gray-400">Fecha Inicio</label>
+                            <input type="Date" id="StartDate" plasceholder="StartDate"
+                                   class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                        <div class="relative">
+                            <label for="IdCinema" class="leading-7 text-sm text-gray-400">Nombre Cinema</label>
+                            <input type="text" id="idCinema" name="name" plasceholder="Identificación del cinema"
+                                   class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                        <div class="relative">
+                            <label for="idCinema" class="leading-7 text-sm text-gray-400">Estado Cinema</label>
+                            <input type="text" id="idCinema" name="name" plasceholder="Identificación del cinema"
+                                   class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                    </div>
+                    <div class="p-2 w-1/2">
+                        <div class="relative">
+                            <div class="relative">
+                                <label for="idCinema" class="leading-7 text-sm text-gray-400">Fecha Fin</label>
+                                <input type="Date" id="DateEnd" plasceholder="DateEnd"
+                                       class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                            <div class="relative">
+                                <label for="idCliente" class="leading-7 text-sm text-gray-400">Id Cliente</label>
+                                <input type="text" id="idCliente" name="name" plasceholder="Identificación del Cliente"
+                                       class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                        </div>
+                        </br>
+                    </div>
+                    <div class="p-2 w-full">
+                        <button onclick="postCategoria()"
+                                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Crear Reservacion</button>
+                    </div>
+                </div>
+            </div>

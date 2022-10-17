@@ -5,8 +5,8 @@ public class StatusAmount {
     private int cancelled;
 
     public StatusAmount(int size, int size1) {
-        this.completed=size;
-        this.cancelled=size1;
+        this.completed = size;
+        this.cancelled = size1;
     }
 
     public int getCompleted() {
