@@ -18,18 +18,21 @@ class Clientes {
             data: JSON.stringify(Cliente),
             contentType: "application/json",
             complete: function (response) {
-                if (response.status === 201) {
-                    $("#idCliente").val("");
-                    $("#nombreCliente").val("");
-                    $("#email").val("");
-                    $("#edad").val("");
-                    $("#detallesCliente").html("<p>Seleccione un cliente</p>")
-                    Clientes.loadAllClient();
-                    alert("Cliente guardado");
-                } else {
-                    alert("se produjo un error, el cliente no fue guardado");
+                if($("#idCliente").val() == "" && $("#nombreCliente").val() == "" &&
+                    $("#email").val() == "" && $("#edad").val() == ""){                    
+                    alert("Debe llenar los campos para registrar al cliente");
+                }else{
+                    if (response.status === 201) {
+                        $("#idCliente").val("");
+                        $("#nombreCliente").val("");
+                        $("#email").val("");
+                        $("#edad").val("");
+                        alert("Cliente guardado");
+                    } else {
+                        alert("se produjo un error, el cliente no fue guardado");
+                    }
                 }
-            }
+            }            
         });
     }
 
