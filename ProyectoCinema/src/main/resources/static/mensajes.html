@@ -11,6 +11,11 @@
     <script src="JS/funcionesMensaje.js" type="text/javascript"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
 </head>
 
 <body onload="Mensaje.loadAll()">
@@ -65,23 +70,22 @@
 
     <!--Tabla-->
     <div class="right-panel">
-        <table class="table table-bordered border-primary">
-            <thead>
-            <tr>
-                <th scope="col">CINEMA</th>
-                <th scope="col">CLIENTE</th>
-                <th scope="col">MENSAJE</th>
-                <th scope="col">ACTUALIZAR</th>
-                <th scope="col">ELIMINAR</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td colspan="5">No hay mensajes registrados...</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="bg-green-400 bg-opacity-100 text-gray-100 text-center"><p class="text-xl">MENSAJES</p></div>			
+            <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">			 				
+                <table id="users" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <thead>
+                        <tr class="bg-indigo-400 bg-opacity-100 text-white">
+                            <th data-priority="1">ID</th>
+                            <th data-priority="2">MENSAJE</th>
+                            <th data-priority="3">CINE</th>
+                            <th data-priority="4">CLIENTE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>					
+                </table>				
+            </div>	
+        </div>
     </div>
     <br>
 
@@ -90,7 +94,31 @@
 </div>
 <br>
 
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
+<!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
+<script>
+    $(document).ready(function(){
+        const url = 'http://localhost:8081/api/Message/all';
+        $('#users').DataTable({
+            ajax:{
+                url:url,
+                dataSrc:''
+            },
+            columns:[
+                {data: "idMessage"},
+                {data: "messagetext"},
+                {data: "id"},
+                {data: "idClient"},
+            ],
+            responsive: true
+        }).columns.adjust()
+        .responsive.recalc();
+    })
+</script>
 </body>
 
 
